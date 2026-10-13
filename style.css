@@ -434,3 +434,16 @@ button:hover {
 .rodape p {
     margin: 5px 0;
 }
+.logo {
+    width: 50px;
+    height: auto;
+    border-radius: 10px;
+    padding: 0%;
+}
+.home {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: -1000px;
+}
