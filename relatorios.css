@@ -1,0 +1,429 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #222;
+    margin: 0;
+    padding: 30px;
+}
+
+.cabecalho-admin {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    padding: 20px 5%;
+    background-color: #174b35;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    border-bottom: 4px solid #6a9b72;
+}
+
+.cabecalho-admin h1 {
+    text-align: left;
+    color: white;
+    font-size: 28px;
+    margin: 8px 0;
+}
+
+.cabecalho-admin p {
+    margin: 5px 0;
+}
+
+.identificacao {
+    color: #b8e0bd;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.emissao {
+    padding: 15px;
+    background-color: #245d43;
+    border: 1px solid #6a9b72;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.conteudo {
+    max-width: 1200px;
+    width: 90%;
+    margin: 30px auto;
+}
+
+.introducao {
+    margin-bottom: 30px;
+}
+
+.introducao h2 {
+    text-align: center;
+    padding: 10px;
+    border-top: 2px solid #174b35;
+    border-bottom: 2px solid #174b35;
+    border-radius: 5px;
+}
+
+.introducao p {
+    line-height: 1.6;
+}
+
+.secao-relatorio {
+    margin: 30px 0;
+    padding: 25px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.secao-relatorio h2 {
+    text-align: center;
+    font-size: 24px;
+    padding: 10px;
+    margin-top: 0;
+    border-top: 2px solid #174b35;
+    border-bottom: 2px solid #174b35;
+    border-radius: 5px;
+}
+
+.form-busca {
+    max-width: none;
+    width: 100%;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f4f8f4;
+    border: 1px solid #c8d8ca;
+    border-radius: 10px;
+    box-shadow: none;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.form-busca label {
+    display: block;
+    margin: 0;
+    font-weight: bold;
+}
+
+.form-busca select,
+.form-busca input {
+    padding: 10px;
+    border: 1px solid #b8c8ba;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background-color: white;
+}
+
+.form-busca select {
+    max-width: 180px;
+}
+
+.form-busca input {
+    flex: 1;
+    min-width: 150px;
+}
+
+.form-busca button {
+    width: auto;
+    margin: 0;
+    padding: 10px 20px;
+    background-color: #245d43;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.form-busca button:hover {
+    background-color: #123b2a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.somente-leitor {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.botao-imprimir {
+    display: block;
+    width: 220px;
+    margin: 20px auto;
+    padding: 12px 20px;
+    background-color: #245d43;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao-imprimir:hover {
+    background-color: #123b2a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px auto;
+    background-color: white;
+}
+
+caption {
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    color: #174b35;
+    font-size: 16px;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+    vertical-align: top;
+}
+
+thead {
+    background-color: #174b35;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f0f5f0;
+}
+
+tbody tr:hover {
+    background-color: #e0eee1;
+}
+
+tfoot {
+    background-color: #dce9dd;
+    color: #174b35;
+    font-weight: bold;
+}
+
+.aviso {
+    margin: 25px 0;
+    padding: 15px;
+    background-color: #edf5ed;
+    color: #174b35;
+    border-left: 5px solid #397653;
+    border-radius: 5px;
+    line-height: 1.5;
+}
+
+.rodape-admin {
+    width: 100%;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #174b35;
+    color: white;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 10px;
+    border-top: 4px solid #6a9b72;
+}
+
+.rodape-admin p {
+    margin: 5px 0;
+}
+
+@media (max-width: 950px) {
+    body {
+        padding: 20px;
+    }
+
+    .conteudo {
+        width: 95%;
+    }
+
+    .cabecalho-admin {
+        position: relative;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-busca {
+        align-items: stretch;
+    }
+
+    .form-busca select,
+    .form-busca input,
+    .form-busca button {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .conteudo {
+        width: 100%;
+    }
+
+    .cabecalho-admin {
+        padding: 20px;
+    }
+
+    .cabecalho-admin h1 {
+        font-size: 23px;
+    }
+
+    .identificacao {
+        font-size: 20px;
+    }
+
+    .secao-relatorio {
+        padding: 12px;
+    }
+
+    .secao-relatorio h2 {
+        font-size: 20px;
+    }
+
+    th,
+    td {
+        padding: 8px;
+        font-size: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    .botao-imprimir {
+        width: 100%;
+    }
+}
+
+@media print {
+    @page {
+        size: landscape;
+        margin: 1.2cm;
+    }
+
+    body {
+        padding: 0;
+        background: white;
+        color: black;
+        font-size: 10pt;
+    }
+
+    .cabecalho-admin {
+        position: static;
+        background: white;
+        color: black;
+        border: 1px solid #555;
+        padding: 10px;
+    }
+
+    .cabecalho-admin h1,
+    .identificacao {
+        color: black;
+    }
+
+    .emissao {
+        background: white;
+        color: black;
+        border: 1px solid #777;
+    }
+
+    .conteudo {
+        width: 100%;
+        max-width: none;
+        margin: 10px 0;
+    }
+
+    .botao-imprimir,
+    .form-busca {
+        display: none;
+    }
+
+    .secao-relatorio {
+        padding: 10px 0;
+        margin-bottom: 20px;
+        box-shadow: none;
+        border: none;
+        break-inside: avoid;
+    }
+
+    .introducao h2,
+    .secao-relatorio h2 {
+        border-color: #555;
+        color: black;
+    }
+
+    table {
+        font-size: 9pt;
+        break-inside: auto;
+    }
+
+    thead {
+        display: table-header-group;
+        background: #e5e5e5;
+        color: black;
+    }
+
+    tfoot {
+        display: table-row-group;
+        background: #eee;
+        color: black;
+    }
+
+    tr {
+        break-inside: avoid;
+    }
+
+    th,
+    td {
+        padding: 6px;
+        border: 1px solid #777;
+    }
+
+    tbody tr:nth-child(even),
+    tbody tr:hover {
+        background: white;
+    }
+
+    .aviso {
+        background: white;
+        color: black;
+        border: 1px solid #777;
+    }
+
+    .rodape-admin {
+        background: white;
+        color: black;
+        border-top: 1px solid #777;
+        border-radius: 0;
+    }
+}

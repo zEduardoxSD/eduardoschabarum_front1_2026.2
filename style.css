@@ -1,0 +1,436 @@
+
+:root {
+    --azul-escuro: #123b5d;
+    --azul-medio: #075985;
+    --azul: #0878bd;
+    --azul-claro: #dceefa;
+    --fundo: #f2f5f8;
+    --borda: #cbd5e1;
+    --texto: #222;
+    --branco: #fff;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: var(--azul-escuro);
+    border-radius: 10px;
+    padding: 25px;
+    font-size: 1.2rem;
+    margin: 0 3rem;
+    transition: 0.3s;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #b9e3ff;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 90%;
+    padding: 0.4rem 5%;
+    background: var(--azul-escuro);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.nome {
+    color: #c5e8ff;
+    font-size: x-large;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--fundo);
+    color: var(--texto);
+    margin: 0;
+    padding: 30px;
+}
+
+h1 {
+    text-align: center;
+    color: var(--azul-escuro);
+}
+
+.titulo {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--borda);
+    border-top: 2px solid var(--borda);
+    padding: 10px;
+    border-radius: 5px;
+    border-color: var(--azul-medio);
+}
+
+h4 {
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--borda);
+    border-top: 2px solid var(--borda);
+    padding: 10px;
+    border-radius: 5px;
+    border-color: var(--azul-medio);
+    overflow-wrap: break-word;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: var(--branco);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid var(--borda);
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background-color: var(--azul-medio);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: var(--azul-escuro);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-cadastro {
+    display: inline-block;
+    background-color: var(--azul-escuro);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 150px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.btn-cadastro:hover {
+    background-color: var(--azul-medio);
+}
+
+.loja {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.loja h2 {
+    text-align: center;
+}
+
+.filtros {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+}
+
+.campo-filtro {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: center;
+    gap: 8px;
+}
+
+.campo-filtro > label:first-child,
+.campo-filtro > span {
+    width: 100%;
+    font-weight: bold;
+}
+
+.campo-filtro input[type="search"],
+.campo-filtro select {
+    width: 100%;
+    min-width: 0;
+    padding: 10px;
+    border: 1px solid var(--borda);
+    border-radius: 5px;
+}
+
+.campo-filtro input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.campo-filtro input[type="radio"] + label {
+    padding: 7px 10px;
+    background: #e8edf2;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.campo-filtro input[type="radio"]:checked + label {
+    background: var(--azul-medio);
+    color: white;
+}
+
+.campo-filtro input[type="radio"]:focus-visible + label {
+    outline: 2px solid var(--azul-escuro);
+}
+
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.produto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    border: 1px solid #d8e0e8;
+    border-radius: 10px;
+    background: var(--branco);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.produto:hover {
+    border-color: var(--azul);
+    box-shadow: 0 4px 10px rgba(18, 59, 93, 0.12);
+}
+
+.produto h3 {
+    min-height: 38px;
+    overflow-wrap: break-word;
+}
+
+.pecas {
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
+}
+
+.preco_produto {
+    margin: 5px 0 0;
+    color: var(--azul-medio);
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.desconto {
+    margin: 0;
+    color: #555;
+    font-size: 13px;
+}
+
+.btn {
+    width: 100%;
+    margin-top: auto;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--azul-escuro);
+    color: white;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--azul);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.loja:has(#freios:checked) .produto:not(.freios),
+.loja:has(#motor:checked) .produto:not(.motor),
+.loja:has(#filtros:checked) .produto:not(.filtros),
+.loja:has(#ignicao:checked) .produto:not(.ignicao) {
+    display: none;
+}
+
+.contato {
+    margin: 50px auto 30px;
+    padding: 30px;
+    max-width: 600px;
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contato .titulo {
+    text-align: center;
+    margin: 0 0 15px;
+}
+
+.contato p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.contato label {
+    font-size: 16px;
+}
+
+.contato textarea {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid var(--borda);
+    border-radius: 5px;
+    resize: vertical;
+    font-family: Arial, sans-serif;
+}
+
+.confirmacao-compra {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    text-align: center;
+    background-color: #e7f2fb;
+    border: 2px solid var(--azul);
+    border-radius: 12px;
+    color: var(--azul-escuro);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.confirmacao-compra h2 {
+    margin-top: 0;
+    color: var(--azul-escuro);
+}
+
+.numero-pedido {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: var(--azul-escuro);
+    color: white;
+    border-radius: 6px;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.confirmacao-compra[hidden] {
+    display: none;
+}
+
+@media (max-width: 950px) {
+    .menu {
+        margin: 0;
+        gap: 15px;
+    }
+
+    .filtros {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .produtos {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        width: 95%;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .header {
+        width: 100%;
+    }
+
+    .menu {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .filtros,
+    .produtos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .produtos {
+        width: 100%;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .produto {
+        padding: 10px;
+    }
+
+    .pecas {
+        height: 110px;
+    }
+
+    .preco_produto {
+        font-size: 16px;
+    }
+
+    .contato {
+        padding: 20px;
+    }
+}
+.rodape {
+    width: 100%;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: var(--azul-escuro);
+    color: white;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 10px;
+    border-top: 4px solid var(--azul-medio);
+    position: fixed;
+}
+
+.rodape p {
+    margin: 5px 0;
+}
