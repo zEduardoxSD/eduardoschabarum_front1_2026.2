@@ -11,6 +11,21 @@ body {
     padding: 30px;
 }
 
+.btn-home{
+    display: block;
+    width: 220px;
+    margin: 5px auto;
+    padding: 12px 20px;
+    background-color: #245d43;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
 .cabecalho-admin {
     position: sticky;
     top: 0;
@@ -426,4 +441,5 @@ tfoot {
         border-top: 1px solid #777;
         border-radius: 0;
     }
+    
 }
