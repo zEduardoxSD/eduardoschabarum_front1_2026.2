@@ -225,6 +225,16 @@ button:hover {
     width: 85%;
     margin: 0 auto;
 }
+.catalogo-produtos{
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    width: 85%;
+    margin: 0 auto;
+}
 
 .produto {
     display: flex;

@@ -1,200 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo</title>
+    <title>Catálogo - Schmidt Auto Peças</title>
     <link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
     <header class="header">
         <img src="./imagens/autoparts.jpeg" alt="logo" class="logo">
-        <a href="index.html" class = "home">Home</a>
-        <nav class="menu">
+        <a href="index.html" class="home">Home</a>
+        <a href="#secao-carrinho" class="menu">Carrinho (<span id="carrinho-badge">0</span>)</a>
+        <nav class="menu" id="menu-dinamico">
             <a href="cadastro.html">Cadastro</a>
             <a href="login.html">Login</a>
             <a href="perfil.html">Perfil</a>
             <a href="relatorios.html">Relatórios</a>
         </nav>
     </header>
+
     <main>
-    <div><h2>Produtos disponiveis</h2></div>
-<div class="loja">
+        <div><h2>Produtos disponíveis</h2></div>
+        <div class="loja">
+            <h2>Catálogo de produtos</h2>
 
-    <h2>Catálogo de produtos</h2>
+            <div class="filtros">
+                <div class="campo-filtro">
+                    <label for="busca">Buscar produto</label>
+                    <input type="search" id="busca" placeholder="Digite o nome da peça...">
+                </div>
 
-    <div class="filtros">
-        <div class="campo-filtro">
-            <label for="busca">Buscar produto</label>
-            <input
-                type="search"
-                id="busca"
-                placeholder="Digite o nome da peça..."
-            >
-        </div>
-        <div class="campo-filtro">
-            <span>Categoria</span>
+                <div class="campo-filtro">
+                    <span>Categoria</span>
+                    <input type="radio" name="categoria" id="todos" checked>
+                    <label for="todos">Todos</label>
 
-            <input type="radio" name="categoria" id="todos" checked>
-            <label for="todos">Todos</label>
+                    <input type="radio" name="categoria" id="freios">
+                    <label for="freios">Freios</label>
 
-            <input type="radio" name="categoria" id="freios">
-            <label for="freios">Freios</label>
+                    <input type="radio" name="categoria" id="motor">
+                    <label for="motor">Motor</label>
 
-            <input type="radio" name="categoria" id="motor">
-            <label for="motor">Motor</label>
+                    <input type="radio" name="categoria" id="filtros">
+                    <label for="filtros">Filtros</label>
 
-            <input type="radio" name="categoria" id="filtros">
-            <label for="filtros">Filtros</label>
+                    <input type="radio" name="categoria" id="ignicao">
+                    <label for="ignicao">Ignição</label>
+                </div>
 
-            <input type="radio" name="categoria" id="ignicao">
-            <label for="ignicao">Ignição</label>
-        </div>
-        <div class="campo-filtro">
-            <label for="preco">Faixa de preço</label>
-            <select id="preco">
-                <option>Todos os preços</option>
-                <option>Até R$ 50,00</option>
-                <option>R$ 50,00 a R$ 150,00</option>
-                <option>Acima de R$ 150,00</option>
-            </select>
-        </div>
-        <div class="campo-filtro">
-            <label for="ordenacao">Ordenar por</label>
-            <select id="ordenacao">
-                <option>Ordem padrão</option>
-                <option>Menor preço</option>
-                <option>Maior preço</option>
-                <option>Nome (A-Z)</option>
-            </select>
-        </div>
+                <div class="campo-filtro">
+                    <label for="preco">Faixa de preço</label>
+                    <select id="preco">
+                        <option value="todos">Todos os preços</option>
+                        <option value="ate-50">Até R$ 50,00</option>
+                        <option value="50-150">R$ 50,00 a R$ 150,00</option>
+                        <option value="acima-150">Acima de R$ 150,00</option>
+                    </select>
+                </div>
 
-    </div>
+                <div class="campo-filtro">
+                    <label for="ordenacao">Ordenar por</label>
+                    <select id="ordenacao">
+                        <option value="padrao">Ordem padrão</option>
+                        <option value="menor-preco">Menor preço</option>
+                        <option value="maior-preco">Maior preço</option>
+                        <option value="nome-az">Nome (A-Z)</option>
+                    </select>
+                </div>
+            </div>
 
-    <div class="produtos">
-
-        <div class="produto ignicao">
-            <h3>Cabos de vela</h3>
-            <img src="./imagens/cabos_de_vela.png" alt="Cabos de vela" class="pecas">
-            <p class="preco_produto">R$ 150,00</p>
-            <p class="desconto">no Pix com 10% de desconto</p>
-            <button class="btn">Adicionar ao carrinho</button>
+            <div id="catalogo-produtos" class="catalogo-produtos"></div>
         </div>
 
-        <div class="produto freios">
-            <h3>Discos de freio</h3>
-            <img src="./imagens/discos_de_freio.jpg" alt="Discos de freio" class="pecas">
-            <p class="preco_produto">R$ 350,00</p>
-            <p class="desconto">no Pix com 10% de desconto</p>
-            <button class="btn">Adicionar ao carrinho</button>
-        </div>
+        <dialog id="modal-detalhes" style="padding: 20px; border-radius: 8px; max-width: 450px;">
+            <img class="modal-imagem" src="" alt="" style="max-width: 200px; display: block; margin: 0 auto 10px;">
+            <h3 class="modal-nome"></h3>
+            <p class="modal-descricao"></p>
+            <p class="modal-preco" style="font-weight: bold;"></p>
+            <p class="modal-estoque"></p>
+            <label for="modal-qtd">Quantidade:</label>
+            <input type="number" id="modal-qtd" class="modal-qtd" value="1" min="1" style="width: 60px; margin: 10px 0;">
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <button type="button" class="btn modal-add-carrinho">Adicionar ao carrinho</button>
+                <button type="button" class="btn" onclick="document.getElementById('modal-detalhes').close()">Fechar</button>
+            </div>
+        </dialog>
+        <dialog id="modal-checkout" style="padding: 20px; border-radius: 8px; max-width: 500px; width: 90%;">
+            <form id="form-checkout" novalidate>
+                <div id="checkout-etapa-1">
+                    <h3>Etapa 1 de 3: Resumo do Pedido</h3>
+                    <div id="checkout-resumo-itens" style="margin: 10px 0;"></div>
+                    <div id="checkout-resumo-totais" style="margin: 10px 0;"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                        <button type="button" class="btn" onclick="document.getElementById('modal-checkout').close()">Cancelar</button>
+                        <button type="button" id="btn-etapa-1-proximo" class="btn">Continuar para Entrega</button>
+                    </div>
+                </div>
 
-        <div class="produto filtros">
-            <h3>Filtro de ar</h3>
-            <img src="./imagens/filtro_de_ar.jpeg" alt="Filtro de ar" class="pecas">
-            <p class="preco_produto">R$ 50,00</p>
-            <p class="desconto">no Pix com 10% de desconto</p>
-            <button class="btn">Adicionar ao carrinho</button>
-        </div>
+                <div id="checkout-etapa-2" style="display: none;">
+                    <h3>Etapa 2 de 3: Endereço de Entrega</h3>
+                    <label for="chk-cep">CEP:</label><br>
+                    <input type="text" id="chk-cep" placeholder="00000-000" maxlength="9" style="width: 100%; margin-bottom: 8px;"><br>
 
-        <div class="produto motor">
-            <h3>Correia de acessórios</h3>
-            <img src="./imagens/correia_de_acessorios.jpeg" alt="Correia de acessórios" class="pecas">
-            <p class="preco_produto">R$ 100,00</p>
-            <p class="desconto">no Pix com 10% de desconto</p>
-            <button class="btn">Adicionar ao carrinho</button>
-        </div>
+                    <label for="chk-rua">Rua / Logradouro:</label><br>
+                    <input type="text" id="chk-rua" placeholder="Ex: Rua das Flores" style="width: 100%; margin-bottom: 8px;"><br>
 
-        <div class="produto motor">
-            <h3>Embreagem Rocam</h3>
-            <img src="./imagens/embreamgem.jpg" alt="Embreagem Rocam" class="pecas">
-            <p class="preco_produto">R$ 550,00</p>
-            <p class="desconto">no Pix com 10% de desconto</p>
-            <button class="btn">Adicionar ao carrinho</button>
-        </div>
+                    <label for="chk-numero">Número:</label><br>
+                    <input type="text" id="chk-numero" placeholder="Ex: 123" style="width: 100%; margin-bottom: 8px;"><br>
 
-        <div class="produto motor">
-            <h3>Kit Correia Dentada</h3>
-            <img src="./imagens/kit_correia_dentata.png" alt="Kit Correia Dentada" class="pecas">
-            <p class="preco_produto">R$ 450,00</p>
-            <p class="desconto">no Pix com 10% de desconto</p>
-            <button class="btn">Adicionar ao carrinho</button>
-        </div>
+                    <label for="chk-cidade">Cidade / UF:</label><br>
+                    <input type="text" id="chk-cidade" placeholder="Ex: Biguaçu - SC" style="width: 100%; margin-bottom: 8px;"><br>
 
-        <div class="produto freios">
-            <h3>Pastilhas de freio</h3>
-            <img src="./imagens/pastilhas.jpeg" alt="Pastilhas de freio" class="pecas">
-            <p class="preco_produto">R$ 249,90</p>
-            <p class="desconto">no Pix com 10% de desconto</p>
-            <button class="btn">Adicionar ao carrinho</button>
-        </div>
+                    <small id="erro-endereco" style="color: red; display: block; margin-bottom: 10px;"></small>
 
-        <div class="produto filtros">
-            <h3>Filtro de óleo</h3>
-            <img src="./imagens/filtro.jpeg" alt="Filtro de óleo" class="pecas">
-            <p class="preco_produto">R$ 45,00</p>
-            <p class="desconto">no Pix com 10% de desconto</p>
-            <button class="btn">Adicionar ao carrinho</button>
-        </div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                        <button type="button" id="btn-etapa-2-voltar" class="btn">Voltar</button>
+                        <button type="button" id="btn-etapa-2-proximo" class="btn">Continuar para Pagamento</button>
+                    </div>
+                </div>
 
-        <div class="produto ignicao">
-            <h3>Vela de ignição</h3>
-            <img src="./imagens/vela.png" alt="Vela de ignição" class="pecas">
-            <p class="preco_produto">R$ 149,99</p>
-            <p class="desconto">no Pix com 10% de desconto</p>
-            <button class="btn">Adicionar ao carrinho</button>
-        </div>
+                <div id="checkout-etapa-3" style="display: none;">
+                    <h3>Etapa 3 de 3: Forma de Pagamento</h3>
+                    <div style="margin: 10px 0;">
+                        <label><input type="radio" name="forma-pagamento" value="Pix" checked> Pix</label><br>
+                        <label><input type="radio" name="forma-pagamento" value="Cartão de Crédito"> Cartão de Crédito</label><br>
+                        <label><input type="radio" name="forma-pagamento" value="Boleto"> Boleto Bancário</label>
+                    </div>
 
-        <div class="produto motor">
-            <h3>Óleo de motor</h3>
-            <img src="./imagens/oleo.jpg" alt="Óleo de motor" class="pecas">
-            <p class="preco_produto">R$ 52,90</p>
-            <p class="desconto">no Pix com 10% de desconto</p>
-            <button class="btn">Adicionar ao carrinho</button>
-        </div>
+                    <div id="dados-cartao" style="display: none; border: 1px solid #ccc; padding: 10px; border-radius: 6px; margin-bottom: 10px;">
+                        <label for="chk-cartao-numero">Número do Cartão:</label><br>
+                        <input type="text" id="chk-cartao-numero" placeholder="Somente números" maxlength="19" style="width: 100%; margin-bottom: 6px;"><br>
 
-    </div>
-</div>
-<div class="carrinho"></div>
-    <h2>Carrinho de compras</h2>
-    <ul id="lista-carrinho" class="produtos">
-        <li>
-            <h3>Vela de ignição</h3>
-            <img src="./imagens/vela.png" alt="Vela de ignição" class="pecas">
-            <p class="preco_produto">R$ 149,99</p>
-            <button class="btn">Remover</button>
-        </li>
-        <li>
-            <h3>Filtro de óleo</h3>
-            <img src="./imagens/filtro.jpeg" alt="Filtro de óleo" class="pecas">
-            <p class="preco_produto">R$ 45,00</p>
-            <button class="btn">Remover</button>
-        </li>
-        <li>
-            <h3>Pastilhas de freio</h3>
-            <img src="./imagens/pastilhas.jpeg" alt="Pastilhas de freio" class="pecas">
-            <p class="preco_produto">R$ 249,90</p>
-            <button class="btn">Remover</button>
-        </li>
-    </ul>
-    <p id="total" class = "produto" style="font-weight: bold;">Total: R$ 444,89</p>
-    <button id="finalizar-compra" class="btn">Finalizar compra</button>
-<div class="confirmacao-compra" hidden>
-    <h2>Compra finalizada com sucesso!</h2>
+                        <label for="chk-cartao-nome">Nome no Cartão:</label><br>
+                        <input type="text" id="chk-cartao-nome" placeholder="Nome como está no cartão" style="width: 100%; margin-bottom: 6px;"><br>
 
-    <p>Obrigado por comprar na Schmidt Auto Peças.</p>
+                        <div style="display: flex; gap: 10px;">
+                            <div style="flex: 1;">
+                                <label for="chk-cartao-validade">Validade:</label><br>
+                                <input type="text" id="chk-cartao-validade" placeholder="MM/AA" maxlength="5" style="width: 100%;">
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="chk-cartao-cvv">CVV:</label><br>
+                                <input type="text" id="chk-cartao-cvv" placeholder="123" maxlength="4" style="width: 100%;">
+                            </div>
+                        </div>
+                    </div>
 
-    <p>Seu pedido foi registrado com o número:</p>
+                    <small id="erro-pagamento" style="color: red; display: block; margin-bottom: 10px;"></small>
 
-    <span class="numero-pedido">CP001</span>
+                    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                        <button type="button" id="btn-etapa-3-voltar" class="btn">Voltar</button>
+                        <button type="submit" class="btn">Confirmar Pedido</button>
+                    </div>
+                </div>
+            </form>
+        </dialog>
 
-    <p>Guarde esse número para consultar seu pedido.</p>
-</div>
-</main>
+        <section id="secao-carrinho" class="carrinho">
+            <h2>Carrinho de compras</h2>
+            <ul id="lista-carrinho" class="produtos"></ul>
+
+            <div style="margin: 15px 0; display: flex; flex-wrap: wrap; gap: 15px;">
+                <div>
+                    <label for="input-cupom">Cupom (ex: SCHMIDT10, MENOS30, FRETEZERO):</label><br>
+                    <input type="text" id="input-cupom" placeholder="Digite o cupom">
+                    <button type="button" id="btn-aplicar-cupom" class="btn">Aplicar</button>
+                    <small id="msg-cupom" style="display: block;"></small>
+                </div>
+
+                <div>
+                    <label for="input-cep">Calcular Frete (CEP - grátis acima de R$ 300):</label><br>
+                    <input type="text" id="input-cep" placeholder="00000-000" maxlength="9">
+                    <button type="button" id="btn-calcular-frete" class="btn">Calcular</button>
+                    <small id="msg-frete" style="display: block;"></small>
+                </div>
+            </div>
+
+            <p id="total" class="produto" style="font-weight: bold;">Total: R$ 0,00</p>
+            <button type="button" id="finalizar-compra" class="btn">Finalizar compra</button>
+        </section>
+    </main>
+
     <footer class="rodape">
-    <p>Schmidt Auto Peças — Loja virtual</p>
-    <p>Todos os direitos reservados © 2026</p>
-</footer>
+        <p>Schmidt Auto Peças — Loja virtual</p>
+        <p>Todos os direitos reservados © 2026</p>
+    </footer>
+
+    <script type="module">
+        import { produtosManager } from './js/produtos.js';
+        import { carrinhoManager } from './js/carrinho.js';
+        import { comprasManager } from './js/compras.js';
+        import { uiManager } from './js/ui.js';
+
+        uiManager.inicializarTema();
+        uiManager.atualizarMenuDinamico();
+
+        produtosManager.inicializarEstoque();
+        produtosManager.inicializarFiltros();
+
+        carrinhoManager.atualizarBadge();
+        carrinhoManager.renderizarCarrinho();
+        comprasManager.inicializarCheckout();
+
+        document.getElementById('btn-aplicar-cupom').addEventListener('click', () => {
+            const codigo = document.getElementById('input-cupom').value;
+            const res = carrinhoManager.aplicarCupom(codigo);
+            const msgEl = document.getElementById('msg-cupom');
+            msgEl.textContent = res.msg;
+            msgEl.style.color = res.ok ? 'green' : 'red';
+        });
+
+        document.getElementById('btn-calcular-frete').addEventListener('click', () => {
+            const cep = document.getElementById('input-cep').value;
+            const res = carrinhoManager.calcularFretePorCEP(cep);
+            const msgEl = document.getElementById('msg-frete');
+            msgEl.textContent = res.msg;
+            msgEl.style.color = res.ok ? 'green' : 'red';
+        });
+    </script>
 </body>
 </html>
